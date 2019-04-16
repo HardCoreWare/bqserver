@@ -1,0 +1,30 @@
+{
+    "app":{
+        
+        "sitename":"MVC",
+        "urlroute":"http://localhost/mvc"
+    },
+
+    "googleCloud":{
+
+        "projectId":"informe-211921",
+
+        "bigQuery":{
+
+            "dataset":"BALANZA",
+            "bsegTable": "BSEGAIO",
+            "cecosTable":"CECOS",
+            "accountsTable":"CUENTAS"
+        }
+
+    },
+
+    "mySql":{
+
+        "host":"localhost",
+        "user":"root",
+        "password":"Pit2018mtv#@",
+        "dataBase":"BALANZA"
+    }
+
+}
