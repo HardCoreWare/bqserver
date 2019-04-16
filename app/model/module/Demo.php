@@ -2,6 +2,12 @@
 
 class Demo extends Connection{
 
+    public function __construct($bigQueryLib){
+
+        $this->attach($bigQueryLib);
+
+    }
+
     public function breakdown($params){
 
         $sql="SELECT ROUND(SUM(CAST(DMBTR AS FLOAT64)), 2) AS MONTO
