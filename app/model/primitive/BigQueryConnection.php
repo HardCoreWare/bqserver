@@ -2,7 +2,7 @@
 
 class BigQueryConnection implements ConnectionInterface{
     
-    private $bigQueryLib;
+    private $bigQueryLib=null;
 
     public function attach($bigQueryLib){
 

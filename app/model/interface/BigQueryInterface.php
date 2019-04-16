@@ -6,11 +6,6 @@ interface ConnectionInterface{
 
 }
 
-interface CountInterface{
-
-    public function count();
-
-}
 
 interface BsegInterface{
 
