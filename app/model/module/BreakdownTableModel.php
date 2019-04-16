@@ -2,6 +2,12 @@
 
 class BreakDownTableModel extends Connection{
 
+    public function __construct($bigQueryLib){
+
+        $this->attach($bigQueryLib);
+
+    }
+
     public function day($params){
 
         $sql=

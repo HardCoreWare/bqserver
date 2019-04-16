@@ -2,12 +2,8 @@
 
 class breakdowntable extends Controller{
 
-    public function __construct($bigQueryLib){
 
-        $this->attach($bigQueryLib);
 
-    }
-    
     public function day($year,$month,$day,$enterprise){
 
         header("Content-Type: application/json");
