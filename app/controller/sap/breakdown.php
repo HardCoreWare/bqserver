@@ -5,7 +5,7 @@ class breakdown extends Controller{
     public function day($year,$month,$day,$account,$enterprise){
 
         $demo = new BreakdownModel(new BigQuery('informe-211921'));
-        $breakdown = $demo->day(["year"=>$year,"month"=>$month,"account"=>$account,"enterprise"=>$enterprise]);
+        $breakdown = $demo->day(["year"=>$year,"month"=>$month,"day"=>$day,"account"=>$account,"enterprise"=>$enterprise]);
         echo(json_encode($breakdown));
         
     }
