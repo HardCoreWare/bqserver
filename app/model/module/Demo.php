@@ -16,7 +16,6 @@ class Demo extends Connection{
         WHERE CAST(SUBSTR(BUDAT,5,2) AS INT64) = 1
         AND CAST(SUBSTR(BUDAT,1,4) AS INT64) = 2019
         AND KOSTL IN (SELECT KOSTL FROM `informe-211921.MULTIVA.CECOS` WHERE MODULO = 'BANCO')
-        AND DMBTR = 'N0212019001'
         AND HKONT = '6410010102');";
 
         $breakdown = $this->bigQueryLib->select($sql);
