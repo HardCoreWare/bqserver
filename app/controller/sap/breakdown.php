@@ -28,6 +28,14 @@ class breakdown extends Controller{
         
     }
 
+    public function all($account,$enterprise){
+
+        $demo = new BreakdownModel(new BigQuery('informe-211921'));
+        $breakdown = $demo->all(["account"=>$account,"enterprise"=>$enterprise]);
+        echo(json_encode($breakdown));
+        
+    }
+
 }
 
 
