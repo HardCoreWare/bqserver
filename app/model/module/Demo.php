@@ -19,8 +19,6 @@ class Demo extends Connection{
         " AND KOSTL IN (SELECT KOSTL FROM `informe-211921.MULTIVA.CECOS` WHERE MODULO = 'BANCO')".
         " AND HKONT = '6410010102');";
 
-        echo($sql);
-
         $breakdown = $this->bigQueryLib->select($sql);
 
         return $breakdown;
