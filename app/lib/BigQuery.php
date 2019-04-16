@@ -1,5 +1,7 @@
 <?php
 
+require '../app/vendor/autoload.php';
+
 use GuzzleHttp\HTTP\Client;
 use Google\Cloud\BigQuery\BigQueryClient;
 use Google\Cloud\BigQuery\Table;
@@ -9,22 +11,15 @@ class BigQuery{
 
     //clase de bigquery cliente
     private $bigQueryClient;
-    private static $instance;
 
-    public static function getInstance($projectId){
+    public function __construct($projectId){
 
-        if (!self::$instance instanceof self){
-
-            self::$instance = new self($projectId);
-   
-        }
-        
-        return self::$instance;
+        $this->begin($projectId);
 
     }
 
-    //
-    private function __construct($projectId){
+    //iniciamos el cliente con la correspondiente llave
+    public function begin($projectId){
 
         try {
             
@@ -37,6 +32,7 @@ class BigQuery{
             die($e);
 
         }
+
     }
 
     //funcion general de consulta
@@ -141,220 +137,219 @@ class BigQuery{
 
 
         //
-    public function select($dml){
+        public function select($dml){
 
-        $rows=$this->getQuery($dml,'rows');
+            $rows=$this->getQuery($dml,'rows');
         
-        $table=[];
-        foreach ($rows as $row) {
+            $table=[];
+            foreach ($rows as $row) {
     
-            $line=[];
-            foreach ($row as $key => $cell) {
+                $line=[];
+                foreach ($row as $key => $cell) {
     
-                if(is_array($cell)){
+                    if(is_array($cell)){
     
-                    $line1=[];
-                    $type;
-                    $keys=array_keys($cell);
+                        $line1=[];
+                        $type;
+                        $keys=array_keys($cell);
     
-                    if((count($keys)==0)||($keys[0]==0)){
+                        if((count($keys)==0)||($keys[0]==0)){
     
-                        $type="num";
-    
-                    }
-    
-                    else{
-    
-                        $type="assoc";
-    
-                    }
-    
-                    switch ($type) {
-    
-                        case 'assoc': 
-    
-                        foreach ($cell as $key1=>$cell1) {
-    
-                            if(is_array($cell1)){
-    
-                                $line2=[];
-                                $keys1=array_keys($cell1);
-                                $tipe1;
-    
-                                if((count($keys1)==0)||($keys1[0]==0)){
-    
-                                    $type1="num";
-                
-                                }
-                
-                                else{
-                
-                                    $type1="assoc";
-                
-                                }
-    
-                                switch ($type1) {
-    
-                                    case 'num':
-    
-                                    foreach ($cell1 as $cell2) {
-    
-                                        if(is_array($cell2)){
-    
-    
-    
-                                        }
-    
-                                        else{
-    
-                                            $line2[]=$cell2;
-    
-                                        }
-    
-                                    }
-    
-    
-                                    break;
-    
-                                    case 'assoc':
-    
-                                    foreach ($cell1 as $key2 => $cell2) {
-    
-                                            
-    
-                                    }
-    
-                                    break;
-                                        
-                                    default:
-    
-                                    break;
-                                }
-    
-                                $line1[$key1]=$cell1;
-    
-                            }
-    
-                            else{
-    
-                                $line1[$key1]=$cell1;
-    
-                            }
+                            $type="num";
     
                         }
-                            
-                        break;
     
-                        case 'num': 
-                            
-                        foreach ($cell as $cell1) {
+                        else{
     
-                            if(is_array($cell1)){
+                            $type="assoc";
     
-                                $line2=[];
-                                $keys1=array_keys($cell1);
-                                $tipe1;
+                        }
     
-                                if((count($keys1)==0)||($keys1[0]==0)){
+                        switch ($type) {
     
-                                    $type1="num";
+                            case 'assoc': 
+    
+                            foreach ($cell as $key1=>$cell1) {
+    
+                                if(is_array($cell1)){
+    
+                                    $line2=[];
+                                    $keys1=array_keys($cell1);
+                                    $tipe1;
+    
+                                    if((count($keys1)==0)||($keys1[0]==0)){
+    
+                                        $type1="num";
                 
-                                }
+                                    }
                 
-                                else{
+                                    else{
                 
-                                    $type1="assoc";
+                                        $type1="assoc";
                 
-                                }
-    
-                                switch ($type1) {
-    
-                                    case 'num':
-    
-                                    foreach ($cell1 as $cell2) {
-    
-                                        if(is_array($cell2)){
-    
-    
-    
-                                        }
-    
-                                        else{
-    
-                                            $line2[]=$cell2;
-    
-                                        }
-    
                                     }
     
+                                    switch ($type1) {
     
-                                    break;
+                                        case 'num':
     
-                                    case 'assoc':
-    
-                                        foreach ($cell1 as $key2 => $cell2) {
+                                        foreach ($cell1 as $cell2) {
     
                                             if(is_array($cell2)){
     
     
     
                                             }
-        
+    
                                             else{
-        
-                                                $line2[$key2]=$cell2;
-        
+    
+                                                $line2[]=$cell2;
+    
                                             }
     
                                         }
     
-                                    break;
-                                        
-                                    default:
     
-                                    break;
+                                        break;
+    
+                                        case 'assoc':
+    
+                                        foreach ($cell1 as $key2 => $cell2) {
+    
+                                            
+    
+                                        }
+    
+                                        break;
+                                        
+                                        default:
+    
+                                        break;
+                                    }
+    
+                                    $line1[$key1]=$cell1;
+    
                                 }
     
-                                $line1[]=$cell1;
+                                else{
+    
+                                    $line1[$key1]=$cell1;
+    
+                                }
     
                             }
-    
-                            else{
-    
-                                $line1[]=$cell1;
-    
-                            }
-    
-                        }
-                                                    
-                        break;
                             
-                        default: break;
-                    
+                            break;
+    
+                            case 'num': 
+                            
+                            foreach ($cell as $cell1) {
+    
+                                if(is_array($cell1)){
+    
+                                    $line2=[];
+                                    $keys1=array_keys($cell1);
+                                    $tipe1;
+    
+                                    if((count($keys1)==0)||($keys1[0]==0)){
+    
+                                        $type1="num";
+                
+                                    }
+                
+                                    else{
+                
+                                        $type1="assoc";
+                
+                                    }
+    
+                                    switch ($type1) {
+    
+                                        case 'num':
+    
+                                        foreach ($cell1 as $cell2) {
+    
+                                            if(is_array($cell2)){
+    
+    
+    
+                                            }
+    
+                                            else{
+    
+                                                $line2[]=$cell2;
+    
+                                            }
+    
+                                        }
+    
+    
+                                        break;
+    
+                                        case 'assoc':
+    
+                                            foreach ($cell1 as $key2 => $cell2) {
+    
+                                                if(is_array($cell2)){
+    
+    
+    
+                                                }
+        
+                                                else{
+        
+                                                    $line2[$key2]=$cell2;
+        
+                                                }
+    
+                                            }
+    
+                                        break;
+                                        
+                                        default:
+    
+                                        break;
+                                    }
+    
+                                    $line1[]=$cell1;
+    
+                                }
+    
+                                else{
+    
+                                    $line1[]=$cell1;
+    
+                                }
+    
+                            }
+                                                    
+                            break;
+                            
+                            default: break;
+                        }
+    
+                        $line[$key]=$line1;
+    
                     }
     
-                    $line[$key]=$line1;
+                    else{
+    
+                        $line[$key]=$cell;
+    
+                    }
     
                 }
     
-                else{
-    
-                    $line[$key]=$cell;
-    
-                }
+                $table[]=$line;
     
             }
     
-            $table[]=$line;
+            $rows=null;
     
-        }
-    
-        $rows=null;
-    
-        return $table;
+            return $table;
             
         }
 
-    }
+}
 
 ?>
