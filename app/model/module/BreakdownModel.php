@@ -8,11 +8,6 @@ class BreakdownModel extends Connection{
 
     }
 
-    public function bsegQuery($params){
-
-
-
-    }
 
     public function day($params){
 
