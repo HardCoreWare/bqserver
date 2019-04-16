@@ -2,7 +2,7 @@
 
 class breakdown extends Controller{
  
-    public function month($year,$month,$account,$enterprise){
+    public function month($year,$account,$enterprise){
 
         $demo = new Demo(new BigQuery('informe-211921'));
         $breakdown = $demo->month(["year"=>$year,"month"=>$month,"account"=>$account,"enterprise"=>$enterprise]);
