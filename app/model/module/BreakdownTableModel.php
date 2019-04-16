@@ -13,7 +13,8 @@ class BreakDownTableModel extends Connection{
         " AND CAST(SUBSTR(BUDAT,1,4) AS INT64) = ".$params['year'].
         " AND CAST(SUBSTR(BUDAT,7,2) AS INT64) = ".$params['day'].
         " AND KOSTL IN (SELECT KOSTL FROM `informe-211921.MULTIVA.CECOS` WHERE MODULO = 'BANCO')".
-        " AND HKONT = '".$params['account']."') ORDER BY CAST(BUDAT AS INT64);";
+        " AND HKONT IN (SELECT DISTINCT(account) FROM `informe-211921.MULTIVA.CUENTAS`))".
+        " ORDER BY CAST(BUDAT AS INT64);";
 
 
         //echo($sql.'<br><br><br>');
@@ -34,7 +35,8 @@ class BreakDownTableModel extends Connection{
         " CAST(SUBSTR(BUDAT,5,2) AS INT64) = ".$params['month'].
         " AND CAST(SUBSTR(BUDAT,1,4) AS INT64) = ".$params['year'].
         " AND KOSTL IN (SELECT KOSTL FROM `informe-211921.MULTIVA.CECOS` WHERE MODULO = 'BANCO')".
-        " AND HKONT = '".$params['account']."') ORDER BY CAST(BUDAT AS INT64);";
+        " AND HKONT IN (SELECT DISTINCT(account) FROM `informe-211921.MULTIVA.CUENTAS`))".
+        " ORDER BY CAST(BUDAT AS INT64);";
 
         //echo($sql.'<br><br><br>');
 
@@ -53,8 +55,8 @@ class BreakDownTableModel extends Connection{
         " WHERE".
         " CAST(SUBSTR(BUDAT,1,4) AS INT64) = ".$params['year'].
         " AND KOSTL IN (SELECT KOSTL FROM `informe-211921.MULTIVA.CECOS` WHERE MODULO = 'BANCO')".
-        " AND HKONT = '".$params['account']."') ORDER BY CAST(BUDAT AS INT64);";
-
+        " AND HKONT IN (SELECT DISTINCT(account) FROM `informe-211921.MULTIVA.CUENTAS`))".
+        " ORDER BY CAST(BUDAT AS INT64);";
         //echo($sql.'<br><br><br>');
 
         $breakdown = $this->bigQueryLib->select($sql);
@@ -71,8 +73,8 @@ class BreakDownTableModel extends Connection{
         " (SELECT BUKRS, BUDAT, DMBTR, SGTXT, KOSTL FROM `informe-211921.MULTIVA.BSEGAIO`".
         " WHERE".
         " KOSTL IN (SELECT KOSTL FROM `informe-211921.MULTIVA.CECOS` WHERE MODULO = 'BANCO')".
-        " AND HKONT = '".$params['account']."') ORDER BY CAST(BUDAT AS INT64);";
-
+        " AND HKONT IN (SELECT DISTINCT(account) FROM `informe-211921.MULTIVA.CUENTAS`))".
+        " ORDER BY CAST(BUDAT AS INT64);";
         //echo($sql.'<br><br><br>');
 
         $breakdown = $this->bigQueryLib->select($sql);
