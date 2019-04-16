@@ -2,7 +2,7 @@
 
 class Demo extends Connection{
 
-    public function breakdown(){
+    public function breakdown($params){
 
         
 
