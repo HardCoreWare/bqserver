@@ -13,7 +13,7 @@ class breakdown extends Controller{
     public function year($year,$account,$enterprise){
 
         $demo = new BreakdownModel(new BigQuery('informe-211921'));
-        $breakdown = $demo->year(["year"=>$year,"month"=>$month,"account"=>$account,"enterprise"=>$enterprise]);
+        $breakdown = $demo->year(["year"=>$year,"account"=>$account,"enterprise"=>$enterprise]);
         echo(json_encode($breakdown));
         
     }
