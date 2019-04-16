@@ -2,7 +2,7 @@
 
 class bseg extends Controller{
  
-    public function breakdown($year,$month,$account,$enterprise){
+    public function breakdown_by_month($year,$month,$account,$enterprise){
 
         $demo = new Demo(new BigQuery('informe-211921'));
         $breakdown = $demo->breakdown(["year"=>$year,"month"=>$month,"account"=>$account,"enterprise"=>$enterprise]);
