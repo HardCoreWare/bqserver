@@ -1,7 +1,5 @@
 <?php
 
-require '../app/vendor/autoload.php';
-
 use GuzzleHttp\HTTP\Client;
 use Google\Cloud\BigQuery\BigQueryClient;
 use Google\Cloud\BigQuery\Table;
