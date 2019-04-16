@@ -1,7 +1,5 @@
 <?php
 
-namespace Pit\BigQuery\Model;
-
 class Connection implements ConnectionInterface{
     
     private $bigQueryLib;

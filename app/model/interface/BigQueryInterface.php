@@ -1,7 +1,5 @@
 <?php
 
-namespace Pit\BigQuery\Model;
-
 interface ConnectionInterface{
 
     public function attach($bigQueryLib);

@@ -1,7 +1,5 @@
 <?php
 
-namespace Pit\BigQuery\Model;
-
 abstract class Bseg extends Connection{
 
     public function count(){
