@@ -17,7 +17,7 @@ class BreakdownModel extends Connection{
     public function month($params){
 
         $sql=
-        " SELECT ROUND(CAST(DMBTR AS FLOAT64), 2) AS ammount, '".$params['enterprise']."' AS enterprise, '".$params['account']."' AS account,  BUKRS as sapSociety, CONCAT(SUBSTR(BUDAT,1,4),'-',SUBSTR(BUDAT,5,2),'-',SUBSTR(BUDAT,7,2)) AS documentDate, SGTXT AS description".
+        " SELECT ROUND(CAST(DMBTR AS FLOAT64), 2) AS ammount, '".$params['enterprise']."' AS enterprise, '".$params['account']."' AS account,  BUKRS as sapSociety, CONCAT(SUBSTR(BUDAT,1,4),'-',SUBSTR(BUDAT,5,2),'-',SUBSTR(BUDAT,7,2)) AS documentDate".
         " FROM ".
         " (SELECT BUKRS, BUDAT, DMBTR, SGTXT FROM `informe-211921.MULTIVA.BSEGAIO`".
         " WHERE CAST(SUBSTR(BUDAT,5,2) AS INT64) = ".$params['month'].
@@ -37,7 +37,7 @@ class BreakdownModel extends Connection{
     public function year($params){
 
         $sql=
-        " SELECT ROUND(CAST(DMBTR AS FLOAT64), 2) AS ammount, '".$params['enterprise']."' AS enterprise, '".$params['account']."' AS account,  BUKRS as sapSociety, CONCAT(SUBSTR(BUDAT,1,4),'-',SUBSTR(BUDAT,5,2),'-',SUBSTR(BUDAT,7,2)) AS documentDate, SGTXT AS description".
+        " SELECT ROUND(CAST(DMBTR AS FLOAT64), 2) AS ammount, '".$params['enterprise']."' AS enterprise, '".$params['account']."' AS account,  BUKRS as sapSociety, CONCAT(SUBSTR(BUDAT,1,4),'-',SUBSTR(BUDAT,5,2),'-',SUBSTR(BUDAT,7,2)) AS documentDate".
         " FROM ".
         " (SELECT BUKRS, BUDAT, DMBTR, SGTXT FROM `informe-211921.MULTIVA.BSEGAIO`".
         " WHERE CAST(SUBSTR(BUDAT,1,4) AS INT64) = ".$params['year'].
