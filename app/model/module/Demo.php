@@ -11,7 +11,8 @@ class Demo extends Bseg
 
     public function breakdown($params){
 
-       $sql = " SELECT ROUND(CAST(DMBTR AS FLOAT64), 2) AS ammount, HKONT AS account, KOSTL AS ceco".
+       $sql = 
+        " SELECT ROUND(CAST(DMBTR AS FLOAT64), 2) AS ammount, HKONT AS account, KOSTL AS ceco".
         " FROM ". 
         " (SELECT BUDAT, DMBTR, HKONT, KOSTL,  FROM `informe-211921.BALANZA.BSEGAIO`".
         " WHERE CAST(SUBSTR(BUDAT,5,2) AS INT64) = ".$params['month'].
