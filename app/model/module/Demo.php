@@ -21,6 +21,8 @@ class Demo extends BsegModel
 
        $breakdown=$this->bigQueryLib->select($sql);
 
+       return $breakdown;
+
     }
     
     public function ammount($params){
