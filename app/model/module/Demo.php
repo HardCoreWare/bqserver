@@ -21,6 +21,8 @@ class Demo extends Connection{
 
         $breakdown = $this->bigQueryLib->select($sql);
 
+        return $breakdown;
+
     }
     
 }
