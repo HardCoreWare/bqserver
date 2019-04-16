@@ -10,12 +10,6 @@ class bseg extends Controller{
         
     }
 
-    public function subtotals($year,$month,$account,$enterprise){
-
-
-        
-    }
-
 }
 
 
