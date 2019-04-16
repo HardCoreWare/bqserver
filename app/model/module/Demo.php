@@ -23,7 +23,7 @@ class Demo extends Connection{
         " WHERE CAST(SUBSTR(BUDAT,5,2) AS INT64) = ".$params['month'].
         " AND CAST(SUBSTR(BUDAT,1,4) AS INT64) = ".$params['year'].
         " AND KOSTL IN (SELECT KOSTL FROM `informe-211921.MULTIVA.CECOS` WHERE MODULO = 'BANCO')".
-        " AND HKONT = '".$params['account']."');";
+        " AND HKONT = '".$params['account']."') ORDER BY CAST(BUDAT AS INT64);";
 
         $breakdown = $this->bigQueryLib->select($sql);
 
