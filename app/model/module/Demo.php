@@ -1,7 +1,7 @@
 <?php
 
 
-class Demo extends BsegModel implements BsegInterface{
+class Demo extends BigQueryConnection implements BsegInterface{
     
     public function breakdown($params){
 
