@@ -14,7 +14,7 @@ class BreakdownModel extends Connection{
 
     }
 
-    public function breakdownByMonth($params){
+    public function month($params){
 
         $sql=
         " SELECT ROUND(CAST(DMBTR AS FLOAT64), 2) AS ammount, '".$params['enterprise']."' AS enterprise, '".$params['account']."' AS account,  BUKRS as sapSociety, CONCAT(SUBSTR(BUDAT,1,4),'-',SUBSTR(BUDAT,5,2),'-',SUBSTR(BUDAT,7,2)) AS documentDate".
@@ -34,7 +34,7 @@ class BreakdownModel extends Connection{
 
     }
 
-    public function breakdownByYear($params){
+    public function year($params){
 
         $sql=
         " SELECT ROUND(CAST(DMBTR AS FLOAT64), 2) AS ammount, '".$params['enterprise']."' AS enterprise, '".$params['account']."' AS account,  BUKRS as sapSociety, CONCAT(SUBSTR(BUDAT,1,4),'-',SUBSTR(BUDAT,5,2),'-',SUBSTR(BUDAT,7,2)) AS documentDate".
