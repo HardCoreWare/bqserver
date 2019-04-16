@@ -48,7 +48,6 @@ class BreakdownModel extends Connection{
         " AND KOSTL IN (SELECT KOSTL FROM `informe-211921.MULTIVA.CECOS` WHERE MODULO = 'BANCO')".
         " AND HKONT = '".$params['account']."') ORDER BY CAST(BUDAT AS INT64);";
 
-
         //echo($sql.'<br><br><br>');
 
         $breakdown = $this->bigQueryLib->select($sql);
@@ -67,7 +66,6 @@ class BreakdownModel extends Connection{
         " CAST(SUBSTR(BUDAT,1,4) AS INT64) = ".$params['year'].
         " AND KOSTL IN (SELECT KOSTL FROM `informe-211921.MULTIVA.CECOS` WHERE MODULO = 'BANCO')".
         " AND HKONT = '".$params['account']."') ORDER BY CAST(BUDAT AS INT64);";
-
 
         //echo($sql.'<br><br><br>');
 
