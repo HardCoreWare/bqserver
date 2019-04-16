@@ -74,6 +74,27 @@ class BreakdownModel extends Connection{
         return $breakdown;
 
     }
+
+    public function all($params){
+
+        $sql=
+        " SELECT ROUND(CAST(DMBTR AS FLOAT64), 2) AS ammount, '".$params['enterprise']."' AS enterprise, '".$params['account']."' AS account,  BUKRS as sapSociety, CONCAT(SUBSTR(BUDAT,1,4),'-',SUBSTR(BUDAT,5,2),'-',SUBSTR(BUDAT,7,2)) AS documentDate, KOSTL AS costCenter".
+        " FROM ".
+        " (SELECT BUKRS, BUDAT, DMBTR, SGTXT, KOSTL FROM `informe-211921.MULTIVA.BSEGAIO`".
+        " WHERE".
+        " KOSTL IN (SELECT KOSTL FROM `informe-211921.MULTIVA.CECOS` WHERE MODULO = 'BANCO')".
+        " AND HKONT = '".$params['account']."') ORDER BY CAST(BUDAT AS INT64);";
+
+        //echo($sql.'<br><br><br>');
+
+        $breakdown = $this->bigQueryLib->select($sql);
+
+        return $breakdown;
+
+    }
+
+
+
     
 }
 
