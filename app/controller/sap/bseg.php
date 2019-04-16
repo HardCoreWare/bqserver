@@ -6,7 +6,7 @@ class bseg extends Controller
     public function breakdown($year,$month,$account,$enterprise){
 
         $this->module('Demo');
-        $bqLib= BigQuery::getInstance('informe-211921');
+        $bqLib=new BigQuery('informe-211921');
         $demo = new Pit\BigQuery\Model\Demo();
         $demo->attach($bqLib);
         $breakdown = $demo->breakdown(["year"=>$year,"month"=>$month,"account"=>$account,"enterprise"=>$enterprise]);
