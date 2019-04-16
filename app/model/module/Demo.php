@@ -1,7 +1,7 @@
 <?php
 
 
-class Demo extends BsegModel{
+class Demo extends BsegModel implements BsegInterface{
     
     public function breakdown($params){
 
