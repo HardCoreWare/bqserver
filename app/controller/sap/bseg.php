@@ -1,7 +1,6 @@
 <?php
 
-class bseg extends Controller
-{
+class bseg extends Controller{
  
     public function breakdown($year,$month,$account,$enterprise){
 
