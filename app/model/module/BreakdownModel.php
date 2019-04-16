@@ -45,7 +45,7 @@ class BreakdownModel extends Connection{
         " AND HKONT = '".$params['account']."') ORDER BY CAST(BUDAT AS INT64);";
 
 
-        echo($sql.'<br><br><br>');
+        //echo($sql.'<br><br><br>');
 
         $breakdown = $this->bigQueryLib->select($sql);
 
