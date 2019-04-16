@@ -11,10 +11,7 @@
 
         "bigQuery":{
 
-            "dataset":"BALANZA",
-            "bsegTable": "BSEGAIO",
-            "cecosTable":"CECOS",
-            "accountsTable":"CUENTAS"
+            "dataset":"BALANZA"
         }
 
     },
