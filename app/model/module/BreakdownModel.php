@@ -1,6 +1,6 @@
 <?php
 
-class Demo extends Connection{
+class BreakdownModel extends Connection{
 
     public function __construct($bigQueryLib){
 
