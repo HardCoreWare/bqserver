@@ -11,7 +11,7 @@ class Demo extends Connection{
     public function breakdown($params){
 
         $sql=
-        " SELECT ROUND(CAST(DMBTR AS FLOAT64), 2) AS ammount, ".$params['enterprise']." AS enterprise ".
+        " SELECT ROUND(CAST(DMBTR AS FLOAT64), 2) AS ammount, '".$params['enterprise']."' AS enterprise ".
         " FROM ".
         " (SELECT BUDAT,DMBTR FROM `informe-211921.MULTIVA.BSEGAIO`".
         " WHERE CAST(SUBSTR(BUDAT,5,2) AS INT64) = 1".
