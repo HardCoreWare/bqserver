@@ -1,6 +1,6 @@
 <?php
 
-abstract class Bseg extends Connection{
+abstract class BsegModel extends Connection implements BsegInterface{
 
     public function count(){
 

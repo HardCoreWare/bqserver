@@ -1,7 +1,7 @@
 <?php
 
 
-class Demo extends Bseg
+class Demo extends BsegModel
 {
     
     public function subtotal($params){
