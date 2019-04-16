@@ -17,7 +17,7 @@ class BreakdownModel extends Connection{
     public function day($params){
 
         $sql=
-        " SELECT ROUND(CAST(DMBTR AS FLOAT64), 2) AS ammount, '".$params['enterprise']."' AS enterprise, '".$params['account']."' AS account,  BUKRS as sapSociety, CONCAT(SUBSTR(BUDAT,1,4),'-',SUBSTR(BUDAT,5,2),'-',SUBSTR(BUDAT,7,2)) AS documentDate".
+        " SELECT ROUND(CAST(DMBTR AS FLOAT64), 2) AS ammount, '".$params['enterprise']."' AS enterprise, '".$params['account']."' AS account,  BUKRS as sapSociety, CONCAT(SUBSTR(BUDAT,1,4),'-',SUBSTR(BUDAT,5,2),'-',SUBSTR(BUDAT,7,2)) AS documentDate, KOSTL AS costCenter".
         " FROM ".
         " (SELECT BUKRS, BUDAT, DMBTR, SGTXT FROM `informe-211921.MULTIVA.BSEGAIO`".
         " WHERE".
