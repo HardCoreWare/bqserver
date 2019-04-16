@@ -11,7 +11,7 @@ class breakdowntable extends Controller{
         
     }
  
-    public function month($year,$month,$account,$enterprise){
+    public function month($year,$month,$enterprise){
 
         header("Content-Type: application/json");
         $demo = new BreakdownTableModel(new BigQuery('informe-211921'));
@@ -20,7 +20,7 @@ class breakdowntable extends Controller{
         
     }
 
-    public function year($year,$account,$enterprise){
+    public function year($year,$enterprise){
 
         header("Content-Type: application/json");
         $demo = new BreakdownTableModel(new BigQuery('informe-211921'));
@@ -29,7 +29,7 @@ class breakdowntable extends Controller{
         
     }
 
-    public function all($account,$enterprise){
+    public function all($enterprise){
 
         header("Content-Type: application/json");
         $demo = new BreakdownTableModel(new BigQuery('informe-211921'));
