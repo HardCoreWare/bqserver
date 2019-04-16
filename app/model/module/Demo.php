@@ -1,7 +1,12 @@
 <?php
 
-
 class Demo extends BigQueryConnection implements BsegInterface{
+
+    public function __construct($bigQueryLib){
+
+        $this->attach($bigQueryLib);
+
+    }
     
     public function breakdown($params){
 
