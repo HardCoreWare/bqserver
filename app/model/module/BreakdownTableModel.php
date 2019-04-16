@@ -1,6 +1,6 @@
 <?php
 
-class BreakDownTableModel{
+class BreakDownTableModel extends Connection{
 
     public function day($params){
 
