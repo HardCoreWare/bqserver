@@ -2,7 +2,6 @@
 
 abstract class BsegModel extends Connection implements BsegInterface{
 
-
     public function count(){
 
         $sql = "SELECT COUNT(*) AS rowCount FROM `informe-211921.MULTIVA.BSEGAIO`";
