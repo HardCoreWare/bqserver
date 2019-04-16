@@ -8,10 +8,16 @@ class Demo extends Connection{
 
     }
 
+    public function bsegQuery($params){
+
+
+
+    }
+
     public function breakdown($params){
 
         $sql=
-        " SELECT ROUND(CAST(DMBTR AS FLOAT64), 2) AS ammount, '".$params['enterprise']."' AS enterprise, '".$params['account']."' AS account, '".$params['year']."' AS  year, '".$params['month']."' AS month, BUKRS as sapSociety".
+        " SELECT ROUND(CAST(DMBTR AS FLOAT64), 2) AS ammount, '".$params['enterprise']."' AS enterprise, '".$params['account']."' AS account, '".$params['year']."' AS  year, '".$params['month']."' AS month, BUKRS as sapSociety, BUDAT AS documentDate".
         " FROM ".
         " (SELECT BUKRS, BUDAT, DMBTR FROM `informe-211921.MULTIVA.BSEGAIO`".
         " WHERE CAST(SUBSTR(BUDAT,5,2) AS INT64) = ".$params['month'].
