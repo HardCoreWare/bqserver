@@ -10,7 +10,6 @@ class bseg extends Controller
         $demo = new Pit\BigQuery\Model\Demo();
         $demo->attach($bqLib);
         $breakdown = $demo->breakdown(["year"=>$year,"month"=>$month,"account"=>$account,"enterprise"=>$enterprise]);
-
         echo(json_encode($breakdown));
         
     }
