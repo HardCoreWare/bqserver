@@ -7,7 +7,8 @@ class bseg extends Controller
 
         $this->module('Demo');
         $bqLib= BigQuery::getInstance('informe-211921');
-        $demo = new Pit\BigQuery\Model\Demo($bqLib);
+        $demo = new Pit\BigQuery\Model\Demo();
+        $demo->attach($bqLib);
         $breakdown = $demo->breakdown(["year"=>$year,"month"=>$month,"account"=>$account,"enterprise"=>$enterprise]);
 
         echo(json_encode($breakdown));
