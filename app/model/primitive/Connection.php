@@ -1,8 +1,8 @@
 <?php
 
-class BigQueryConnection implements ConnectionInterface{
-    
-    private $bigQueryLib=null;
+class Connection implements ConnectionInterface{
+
+    protected $bigQueryLib;
 
     public function attach($bigQueryLib){
 
@@ -10,7 +10,5 @@ class BigQueryConnection implements ConnectionInterface{
 
     }
 
+
 }
-
-
-?>
