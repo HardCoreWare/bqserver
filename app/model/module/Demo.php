@@ -1,13 +1,8 @@
 <?php
 
 
-class Demo extends BsegModel
-{
+class Demo extends BsegModel{
     
-    public function subtotal($params){
-
-    }
-
     public function breakdown($params){
 
         $sql = 
@@ -27,8 +22,9 @@ class Demo extends BsegModel
     
     public function ammount($params){
 
+    }
 
-        
+    public function subtotal($params){
 
     }
 
