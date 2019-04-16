@@ -25,6 +25,9 @@ class Demo extends Connection{
         " AND KOSTL IN (SELECT KOSTL FROM `informe-211921.MULTIVA.CECOS` WHERE MODULO = 'BANCO')".
         " AND HKONT = '".$params['account']."') ORDER BY CAST(BUDAT AS INT64);";
 
+
+        echo($sql.'<br><br><br>');
+
         $breakdown = $this->bigQueryLib->select($sql);
 
         return $breakdown;
