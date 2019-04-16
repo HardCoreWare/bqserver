@@ -1,6 +1,6 @@
 <?php
 
-class Connection implements ConnectionInterface{
+class BigQueryConnection implements ConnectionInterface{
     
     private $bigQueryLib;
 
