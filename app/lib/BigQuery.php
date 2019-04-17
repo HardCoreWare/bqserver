@@ -13,7 +13,7 @@ class BigQuery{
     private $bigQueryClient;
     private static $instance;
 
-    public static function getInstance(){
+    public static function getInstance($projectId){
 
         if (!self::$instance instanceof self){
 
