@@ -14,12 +14,22 @@ class BigQuery{
 
     public function __construct($projectId){
 
-        $this->begin($projectId);
+        try {
+            
+            $this->bigQueryClient = new BigQueryClient(['projectId'=>$projectId]);
+
+        }
+
+        catch(Exception $e){
+
+            die($e);
+
+        }
 
     }
 
     //iniciamos el cliente con la correspondiente llave
-    public function begin($projectId){
+    public function connect($projectId){
 
         try {
             
