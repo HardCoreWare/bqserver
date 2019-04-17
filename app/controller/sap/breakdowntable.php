@@ -16,7 +16,7 @@ class breakdowntable extends Controller{
     public function month($year,$month,$enterprise){
 
         header("Content-Type: application/json");
-        $demo = new BreakdownTableModel(new BigQuery('informe-211921'));
+        $demo = new BreakdownTableModel(BigQuery::getInstance('informe-211921'));
         $breakdown = $demo->month(["year"=>$year,"month"=>$month,"enterprise"=>$enterprise]);
         echo(json_encode($breakdown));
         
@@ -25,7 +25,7 @@ class breakdowntable extends Controller{
     public function year($year,$enterprise){
 
         header("Content-Type: application/json");
-        $demo = new BreakdownTableModel(new BigQuery('informe-211921'));
+        $demo = new BreakdownTableModel(BigQuery::getInstance('informe-211921'));
         $breakdown = $demo->year(["year"=>$year,"enterprise"=>$enterprise]);
         echo(json_encode($breakdown));
         
