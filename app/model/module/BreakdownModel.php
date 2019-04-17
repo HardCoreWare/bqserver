@@ -19,7 +19,7 @@ class BreakdownModel extends Connection{
         " CAST(SUBSTR(BUDAT,5,2) AS INT64) = ".$params['month'].
         " AND CAST(SUBSTR(BUDAT,1,4) AS INT64) = ".$params['year'].
         " AND CAST(SUBSTR(BUDAT,7,2) AS INT64) = ".$params['day'].
-        " AND KOSTL IN (SELECT KOSTL FROM `informe-211921.MULTIVA.CECOS` WHERE MODULO = 'BANCO')".
+        " AND KOSTL IN (SELECT KOSTL FROM `informe-211921.MULTIVA.CECOS` WHERE MODULO = '".$params['enterprise']."')".
         " AND HKONT = '".$params['account']."') ORDER BY CAST(BUDAT AS INT64);";
 
 
@@ -40,7 +40,7 @@ class BreakdownModel extends Connection{
         " WHERE".
         " CAST(SUBSTR(BUDAT,5,2) AS INT64) = ".$params['month'].
         " AND CAST(SUBSTR(BUDAT,1,4) AS INT64) = ".$params['year'].
-        " AND KOSTL IN (SELECT KOSTL FROM `informe-211921.MULTIVA.CECOS` WHERE MODULO = 'BANCO')".
+        " AND KOSTL IN (SELECT KOSTL FROM `informe-211921.MULTIVA.CECOS` WHERE MODULO = '".$params['enterprise']."')".
         " AND HKONT = '".$params['account']."') ORDER BY CAST(BUDAT AS INT64);";
 
         //echo($sql.'<br><br><br>');
@@ -59,7 +59,7 @@ class BreakdownModel extends Connection{
         " (SELECT BUKRS, BUDAT, DMBTR, SGTXT, KOSTL FROM `informe-211921.MULTIVA.BSEGAIO`".
         " WHERE".
         " CAST(SUBSTR(BUDAT,1,4) AS INT64) = ".$params['year'].
-        " AND KOSTL IN (SELECT KOSTL FROM `informe-211921.MULTIVA.CECOS` WHERE MODULO = 'BANCO')".
+        " AND KOSTL IN (SELECT KOSTL FROM `informe-211921.MULTIVA.CECOS` WHERE MODULO = '".$params['enterprise']."')".
         " AND HKONT = '".$params['account']."') ORDER BY CAST(BUDAT AS INT64);";
 
         //echo($sql.'<br><br><br>');
@@ -77,7 +77,7 @@ class BreakdownModel extends Connection{
         " FROM ".
         " (SELECT BUKRS, BUDAT, DMBTR, SGTXT, KOSTL FROM `informe-211921.MULTIVA.BSEGAIO`".
         " WHERE".
-        " KOSTL IN (SELECT KOSTL FROM `informe-211921.MULTIVA.CECOS` WHERE MODULO = 'BANCO')".
+        " KOSTL IN (SELECT KOSTL FROM `informe-211921.MULTIVA.CECOS` WHERE MODULO = '".$params['enterprise']."')".
         " AND HKONT = '".$params['account']."') ORDER BY CAST(BUDAT AS INT64);";
 
         //echo($sql.'<br><br><br>');
