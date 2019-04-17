@@ -11,8 +11,19 @@ class BigQuery{
 
     //clase de bigquery cliente
     private $bigQueryClient;
+    private static $instance;
 
-    public function __construct($projectId){
+    public static function getInstance(){
+
+        if (!self::$instance instanceof self){
+
+        self::$instance = new self($projectId);
+
+        }
+        return self::$instance;
+    }
+
+    private function __construct($projectId){
 
         try {
             
