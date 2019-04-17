@@ -81,6 +81,7 @@ class BreakDownTableModel extends Connection{
 
         $breakdown = $this->bigQueryLib->select($uniquery);
 
+        return $breakdown;
 
     }
 
