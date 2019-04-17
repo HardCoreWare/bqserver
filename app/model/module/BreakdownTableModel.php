@@ -59,7 +59,7 @@ class BreakDownTableModel extends Connection{
 
         $subquerys=[];
 
-        for ($i=0; $i <count($enterprises) ; $i++) { 
+        for ($i=0; $i <count($enterpriseArray) ; $i++) { 
 
             $enterprise=$enterprises[$i];
 
