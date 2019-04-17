@@ -55,7 +55,6 @@ class BreakDownTableModel extends Connection{
 
     public function year($params){
 
-        $enterprises=explode("-",$params['enterprise']);
 
         $sql=
         " SELECT ROUND(CAST(DMBTR AS FLOAT64), 2) AS ammount, '".$params['enterprise']."' AS enterprise, HKONT AS account,  BUKRS as sapSociety, CONCAT(SUBSTR(BUDAT,1,4),'-',SUBSTR(BUDAT,5,2),'-',SUBSTR(BUDAT,7,2)) AS documentDate, KOSTL AS costCenter".
@@ -75,6 +74,12 @@ class BreakDownTableModel extends Connection{
     }
 
     public function all($params){
+
+        $enterpriseArray=explode("-",$params['enterprise']);
+
+        $enterprises="'".implode("','",$enterpriseArray)."'";
+
+        echo($enterprises);
 
         $sql=
         " SELECT ROUND(CAST(DMBTR AS FLOAT64), 2) AS ammount, '".$params['enterprise']."' AS enterprise, HKONT AS account,  BUKRS as sapSociety, CONCAT(SUBSTR(BUDAT,1,4),'-',SUBSTR(BUDAT,5,2),'-',SUBSTR(BUDAT,7,2)) AS documentDate, KOSTL AS costCenter".
